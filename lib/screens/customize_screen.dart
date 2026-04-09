@@ -23,17 +23,17 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
   Set<String> selectedSideOptions = {};
 
   final List<ToppinItem> toppings = [
-    ToppinItem(id: '1', name: 'Tomato', icon: '🍅'),
-    ToppinItem(id: '2', name: 'Cheese', icon: '🧀'),
-    ToppinItem(id: '3', name: 'Lettuce', icon: '🥬'),
-    ToppinItem(id: '4', name: 'Onion', icon: '🧅'),
+    ToppinItem(id: '1', name: 'Tomato', image: 'assets/Tomato.jpeg'),
+    ToppinItem(id: '2', name: 'Cheese', image: 'assets/Bacons.jpeg'),
+    ToppinItem(id: '3', name: 'Lettuce', image: 'assets/Pickles.jpeg'),
+    ToppinItem(id: '4', name: 'Onion', image: 'assets/Onions.jpeg'),
   ];
 
   final List<ToppinItem> sideOptions = [
-    ToppinItem(id: '1', name: 'Fries', icon: '🍟'),
-    ToppinItem(id: '2', name: 'Coleslaw', icon: '🥗'),
-    ToppinItem(id: '3', name: 'Salad', icon: '🥙'),
-    ToppinItem(id: '4', name: 'Nachos', icon: '🌮'),
+    ToppinItem(id: '1', name: 'Fries', image: null),
+    ToppinItem(id: '2', name: 'Coleslaw', image: null),
+    ToppinItem(id: '3', name: 'Salad', image: null),
+    ToppinItem(id: '4', name: 'Nachos', image: null),
   ];
 
   String get spiceText {
@@ -86,16 +86,10 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                   Container(
                     height: 200,
                     width: double.infinity,
-                    color: const Color(0xFFE8E8E8),
-                    child: Center(
-                      child: Text(
-                        widget.foodItem.name[0],
-                        style: const TextStyle(
-                          fontSize: 60,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFCCCCCC),
-                        ),
-                      ),
+                    color: const Color(0xFFF5F5F5),
+                    child: Image.asset(
+                      widget.foodItem.image,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   Padding(
@@ -307,14 +301,28 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                                       ? const Color(0xFFD32F2F)
                                       : const Color(0xFFF5F5F5),
                                   borderRadius: BorderRadius.circular(12),
+                                  border: isSelected
+                                      ? null
+                                      : Border.all(
+                                          color: const Color(0xFFEEEEEE),
+                                          width: 1,
+                                        ),
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      topping.icon,
-                                      style: const TextStyle(fontSize: 28),
-                                    ),
+                                    if (topping.image != null)
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: Image.asset(
+                                          topping.image!,
+                                          width: 40,
+                                          height: 40,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      )
+                                    else
+                                      const SizedBox(height: 40),
                                     const SizedBox(height: 4),
                                     Text(
                                       topping.name,
@@ -377,14 +385,28 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                                       ? const Color(0xFFD32F2F)
                                       : const Color(0xFFF5F5F5),
                                   borderRadius: BorderRadius.circular(12),
+                                  border: isSelected
+                                      ? null
+                                      : Border.all(
+                                          color: const Color(0xFFEEEEEE),
+                                          width: 1,
+                                        ),
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      sideOption.icon,
-                                      style: const TextStyle(fontSize: 28),
-                                    ),
+                                    if (sideOption.image != null)
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: Image.asset(
+                                          sideOption.image!,
+                                          width: 40,
+                                          height: 40,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      )
+                                    else
+                                      const SizedBox(height: 40),
                                     const SizedBox(height: 4),
                                     Text(
                                       sideOption.name,
@@ -497,7 +519,7 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
 class ToppinItem {
   final String id;
   final String name;
-  final String icon;
+  final String? image;
 
-  ToppinItem({required this.id, required this.name, required this.icon});
+  ToppinItem({required this.id, required this.name, this.image});
 }
