@@ -58,10 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 40,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: const Color(0xFFE8E8E8),
-                        ),
-                        child: const Center(
-                          child: Text('👤', style: TextStyle(fontSize: 20)),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/profile.jpeg'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ],

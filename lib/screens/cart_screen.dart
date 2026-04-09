@@ -188,43 +188,6 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   const SizedBox(height: 12),
 
-                  // Add new card option
-                  GestureDetector(
-                    onTap: () {
-                      // Handle add new card
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: const Color(0xFFD32F2F),
-                          width: 2,
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.add,
-                            color: Color(0xFFD32F2F),
-                            size: 20,
-                          ),
-                          const SizedBox(width: 12),
-                          const Text(
-                            'New card details for future payments',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Color(0xFFD32F2F),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-
                   // Save card checkbox
                   GestureDetector(
                     onTap: () {
