@@ -43,16 +43,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   children: [
                     Container(
                       height: 300,
-                      decoration: BoxDecoration(color: const Color(0xFFE8E8E8)),
-                      child: Center(
-                        child: Text(
-                          widget.foodItem.name[0],
-                          style: const TextStyle(
-                            fontSize: 80,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFCCCCCC),
-                          ),
-                        ),
+                      decoration: const BoxDecoration(color: Color(0xFFF5F5F5)),
+                      child: Image.asset(
+                        widget.foodItem.image,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     // Back button

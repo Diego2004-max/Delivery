@@ -357,13 +357,14 @@ class _FoodItemCardState extends State<FoodItemCard> {
                   topLeft: Radius.circular(16),
                   topRight: Radius.circular(16),
                 ),
-                color: Color(0xFFFFF3E0),
+                color: Color(0xFFF5F5F5),
               ),
-              child: Center(
-                child: Text(
-                  '🍔',
-                  style: const TextStyle(fontSize: 60),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
                 ),
+                child: Image.asset(widget.foodItem.image, fit: BoxFit.cover),
               ),
             ),
             // Content

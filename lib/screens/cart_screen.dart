@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import '../models/food_item.dart';
+import 'payment_success_screen.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({super.key});
+  final FoodItem foodItem;
+  final int quantity;
+
+  const CartScreen({super.key, required this.foodItem, this.quantity = 1});
 
   @override
   State<CartScreen> createState() => _CartScreenState();
@@ -19,10 +24,10 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const double orderAmount = 16.48;
-    const double taxAmount = 0.3;
-    const double deliveryFees = 1.5;
-    const double totalAmount = 18.19;
+    double orderAmount = widget.foodItem.price * widget.quantity;
+    double taxAmount = orderAmount * 0.05;
+    double deliveryFees = 1.5;
+    double totalAmount = orderAmount + taxAmount + deliveryFees;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -194,15 +199,15 @@ class _CartScreenState extends State<CartScreen> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: const Color(0xFFE63946),
+                          color: const Color(0xFFD32F2F),
                           width: 2,
                         ),
                       ),
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.add,
-                            color: const Color(0xFFE63946),
+                            color: Color(0xFFD32F2F),
                             size: 20,
                           ),
                           const SizedBox(width: 12),
@@ -210,7 +215,7 @@ class _CartScreenState extends State<CartScreen> {
                             'New card details for future payments',
                             style: TextStyle(
                               fontSize: 13,
-                              color: Color(0xFFE63946),
+                              color: Color(0xFFD32F2F),
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -236,7 +241,7 @@ class _CartScreenState extends State<CartScreen> {
                               saveCardForFuture = value ?? false;
                             });
                           },
-                          activeColor: const Color(0xFFE63946),
+                          activeColor: const Color(0xFFD32F2F),
                         ),
                         const Expanded(
                           child: Text(
@@ -287,9 +292,9 @@ class _CartScreenState extends State<CartScreen> {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
-                        '\$18.19',
-                        style: TextStyle(
+                      Text(
+                        '\$${totalAmount.toStringAsFixed(2)}',
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF1A1A1A),
@@ -299,7 +304,12 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/payment-success');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PaymentSuccessScreen(),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF1A1A1A),

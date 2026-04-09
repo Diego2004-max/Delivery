@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         '/home': (context) => const HomeScreen(),
-        '/cart': (context) => const CartScreen(),
         '/payment-success': (context) => const PaymentSuccessScreen(),
         '/profile': (context) => const ProfileScreen(),
         '/chat': (context) => const ChatScreen(),

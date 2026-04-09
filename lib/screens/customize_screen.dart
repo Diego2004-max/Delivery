@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/food_item.dart';
+import 'cart_screen.dart';
 
 class CustomizeScreen extends StatefulWidget {
   final FoodItem foodItem;
@@ -454,7 +455,15 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/cart');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CartScreen(
+                            foodItem: widget.foodItem,
+                            quantity: selectedPortion,
+                          ),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFD32F2F),
