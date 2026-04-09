@@ -38,8 +38,9 @@ class _CartScreenState extends State<CartScreen> {
           'Order summary',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontSize: 18,
+            fontWeight: FontWeight.w900,
+            letterSpacing: -0.3,
           ),
         ),
         actions: [
@@ -144,9 +145,9 @@ class _CartScreenState extends State<CartScreen> {
                   const Text(
                     'Payment methods',
                     style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF1A1A1A),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                      color: Color(0xFF000000),
                     ),
                   ),
                   const SizedBox(height: 12),

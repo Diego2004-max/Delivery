@@ -115,8 +115,9 @@ class _ChatScreenState extends State<ChatScreen> {
           'Live Chat',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontSize: 18,
+            fontWeight: FontWeight.w900,
+            letterSpacing: -0.3,
           ),
         ),
         actions: [
@@ -177,7 +178,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: const BorderSide(color: Color(0xFFE63946)),
+                        borderSide: const BorderSide(color: Color(0xFFD32F2F)),
                       ),
                       filled: true,
                       fillColor: const Color(0xFFFAFAFA),
@@ -197,7 +198,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     width: 44,
                     height: 44,
                     decoration: const BoxDecoration(
-                      color: Color(0xFFE63946),
+                      color: Color(0xFFD32F2F),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
@@ -231,7 +232,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     vertical: 12,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFE63946),
+                    color: const Color(0xFFD32F2F),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Text(

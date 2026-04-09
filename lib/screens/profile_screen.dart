@@ -41,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: const Color(0xFFE8E8E8),
-                  border: Border.all(color: const Color(0xFFE63946), width: 3),
+                  border: Border.all(color: const Color(0xFFD32F2F), width: 3),
                 ),
                 child: Center(
                   child: Text(

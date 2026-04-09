@@ -20,13 +20,13 @@ class PaymentSuccessScreen extends StatelessWidget {
                   height: 120,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: const Color(0xFFE63946).withOpacity(0.1),
+                    color: const Color(0xFFD32F2F).withOpacity(0.1),
                   ),
                   child: const Center(
                     child: Icon(
                       Icons.check,
                       size: 60,
-                      color: Color(0xFFE63946),
+                      color: Color(0xFFD32F2F),
                     ),
                   ),
                 ),
@@ -36,9 +36,10 @@ class PaymentSuccessScreen extends StatelessWidget {
                 const Text(
                   'Success !',
                   style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1A1A1A),
+                    fontSize: 32,
+                    fontWeight: FontWeight.w900,
+                    color: Color(0xFF000000),
+                    letterSpacing: -0.5,
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -49,7 +50,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 14,
-                    color: Color(0xFF999999),
+                    color: Color(0xFF666666),
                     height: 1.6,
                   ),
                 ),
@@ -63,7 +64,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                       Navigator.popUntil(context, (route) => route.isFirst);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFE63946),
+                      backgroundColor: const Color(0xFFD32F2F),
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

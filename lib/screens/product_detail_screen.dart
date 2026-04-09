@@ -25,7 +25,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   Color get spiceColor {
     if (spiceLevel < 0.5) return const Color(0xFF4CAF50); // Green
     if (spiceLevel < 1.5) return const Color(0xFFFFA500); // Orange
-    return const Color(0xFFE63946); // Red
+    return const Color(0xFFD32F2F); // Red
   }
 
   @override
@@ -60,7 +60,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       top: 16,
                       left: 16,
                       child: GestureDetector(
-                        onTap: () => Navigator.pop(context),
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
                         child: Container(
                           width: 40,
                           height: 40,
@@ -108,16 +110,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 Text(
                                   widget.foodItem.name,
                                   style: const TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF1A1A1A),
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.w900,
+                                    color: Color(0xFF000000),
+                                    letterSpacing: -0.3,
                                   ),
                                 ),
                                 Text(
                                   widget.foodItem.restaurant,
                                   style: const TextStyle(
                                     fontSize: 14,
-                                    color: Color(0xFF999999),
+                                    color: Color(0xFF888888),
                                   ),
                                 ),
                               ],
@@ -134,7 +137,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   ? Icons.favorite
                                   : Icons.favorite_border,
                               color: isFavorite
-                                  ? const Color(0xFFE63946)
+                                  ? const Color(0xFFD32F2F)
                                   : Colors.grey,
                               size: 28,
                             ),

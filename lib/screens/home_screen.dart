@@ -37,16 +37,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             'Foodgo',
                             style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF1A1A1A),
+                              fontSize: 32,
+                              fontWeight: FontWeight.w900,
+                              color: Color(0xFF000000),
+                              letterSpacing: -0.5,
                             ),
                           ),
                           Text(
                             'Order your favorite food!',
                             style: TextStyle(
-                              fontSize: 14,
-                              color: Color(0xFF666666),
+                              fontSize: 13,
+                              color: Color(0xFF888888),
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -57,10 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: const Color(0xFFE8E8E8),
-                          image: const DecorationImage(
-                            image: AssetImage('assets/profile.png'),
-                            fit: BoxFit.cover,
-                          ),
+                        ),
+                        child: const Center(
+                          child: Text('👤', style: TextStyle(fontSize: 20)),
                         ),
                       ),
                     ],
@@ -107,11 +108,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 50,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFE63946),
+                          color: const Color(0xFFD32F2F),
                           borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFE63946).withOpacity(0.3),
+                              color: const Color(0xFFD32F2F).withOpacity(0.3),
                               blurRadius: 8,
                               offset: const Offset(0, 4),
                             ),
@@ -213,75 +214,88 @@ class _HomeScreenState extends State<HomeScreen> {
             left: 0,
             right: 0,
             child: Container(
-              height: 70,
+              height: 80,
               decoration: BoxDecoration(
-                color: const Color(0xFFE63946),
+                color: const Color(0xFFD32F2F),
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25),
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 10,
-                    offset: const Offset(0, -2),
+                    color: Colors.black.withOpacity(0.15),
+                    blurRadius: 15,
+                    offset: const Offset(0, -5),
                   ),
                 ],
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Stack(
+                alignment: Alignment.center,
                 children: [
-                  _buildNavItem(Icons.home, true, onTap: () {}),
-                  _buildNavItem(
-                    Icons.person,
-                    false,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfileScreen(),
-                        ),
-                      ).then((_) {
-                        // Refresh home screen if needed
-                        setState(() {});
-                      });
-                    },
+                  // Nav items row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildNavItem(Icons.home, true, onTap: () {}),
+                      _buildNavItem(
+                        Icons.person,
+                        false,
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(
+                                MaterialPageRoute(
+                                  builder: (context) => const ProfileScreen(),
+                                ),
+                              )
+                              .then((_) {
+                                setState(() {});
+                              });
+                        },
+                      ),
+                      const SizedBox(width: 60),
+                      _buildNavItem(
+                        Icons.message,
+                        false,
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(
+                                MaterialPageRoute(
+                                  builder: (context) => const ChatScreen(),
+                                ),
+                              )
+                              .then((_) {
+                                setState(() {});
+                              });
+                        },
+                      ),
+                      _buildNavItem(Icons.favorite, false, onTap: () {}),
+                    ],
                   ),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.15),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
+                  // Floating button
+                  Positioned(
+                    bottom: 22,
+                    child: Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.25),
+                            blurRadius: 15,
+                            offset: const Offset(0, 6),
+                          ),
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.add,
+                        color: Color(0xFFD32F2F),
+                        size: 36,
+                        weight: 900,
+                      ),
                     ),
-                    child: const Icon(
-                      Icons.add,
-                      color: Color(0xFFE63946),
-                      size: 28,
-                    ),
                   ),
-                  _buildNavItem(
-                    Icons.message,
-                    false,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ChatScreen(),
-                        ),
-                      ).then((_) {
-                        setState(() {});
-                      });
-                    },
-                  ),
-                  _buildNavItem(Icons.favorite, false, onTap: () {}),
                 ],
               ),
             ),
@@ -335,62 +349,22 @@ class _FoodItemCardState extends State<FoodItemCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Image with favorite button
-            Stack(
-              children: [
-                Container(
-                  height: 120,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
-                    ),
-                    color: Color(0xFFE8E8E8),
-                  ),
-                  child: Center(
-                    child: Text(
-                      widget.foodItem.name[0],
-                      style: const TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFCCCCCC),
-                      ),
-                    ),
-                  ),
+            // Image
+            Container(
+              height: 120,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
                 ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isFavorite = !isFavorite;
-                      });
-                    },
-                    child: Container(
-                      width: 32,
-                      height: 32,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.15),
-                            blurRadius: 4,
-                          ),
-                        ],
-                      ),
-                      child: Icon(
-                        isFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: isFavorite
-                            ? const Color(0xFFE63946)
-                            : Colors.grey,
-                        size: 18,
-                      ),
-                    ),
-                  ),
+                color: Color(0xFFFFF3E0),
+              ),
+              child: Center(
+                child: Text(
+                  '🍔',
+                  style: const TextStyle(fontSize: 60),
                 ),
-              ],
+              ),
             ),
             // Content
             Padding(
@@ -411,7 +385,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                     widget.foodItem.restaurant,
                     style: const TextStyle(
                       fontSize: 12,
-                      color: Color(0xFF999999),
+                      color: Color(0xFF666666),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -430,17 +404,24 @@ class _FoodItemCardState extends State<FoodItemCard> {
                             widget.foodItem.rating.toString(),
                             style: const TextStyle(
                               fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF1A1A1A),
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF000000),
                             ),
                           ),
                         ],
                       ),
-                      Text(
-                        '${widget.foodItem.reviews} min',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF999999),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isFavorite = !isFavorite;
+                          });
+                        },
+                        child: Icon(
+                          isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: isFavorite
+                              ? const Color(0xFFD32F2F)
+                              : Colors.grey,
+                          size: 16,
                         ),
                       ),
                     ],

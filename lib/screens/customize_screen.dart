@@ -44,7 +44,7 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
   Color get spiceColor {
     if (spiceLevel < 0.5) return const Color(0xFF4CAF50);
     if (spiceLevel < 1.5) return const Color(0xFFFFA500);
-    return const Color(0xFFE63946);
+    return const Color(0xFFD32F2F);
   }
 
   @override
@@ -106,9 +106,10 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                         Text(
                           'Customize Your Burger',
                           style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF1A1A1A),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                            color: Color(0xFF000000),
+                            letterSpacing: -0.3,
                           ),
                         ),
                         const SizedBox(height: 4),
@@ -116,7 +117,7 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                           'In Your Taste, Ultimate Flavors',
                           style: const TextStyle(
                             fontSize: 13,
-                            color: Color(0xFF999999),
+                            color: Color(0xFF888888),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -216,7 +217,7 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                                       width: 24,
                                       height: 24,
                                       decoration: const BoxDecoration(
-                                        color: Color(0xFFE63946),
+                                        color: Color(0xFFD32F2F),
                                         shape: BoxShape.circle,
                                       ),
                                       child: const Icon(
@@ -246,7 +247,7 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                                       width: 24,
                                       height: 24,
                                       decoration: const BoxDecoration(
-                                        color: Color(0xFFE63946),
+                                        color: Color(0xFFD32F2F),
                                         shape: BoxShape.circle,
                                       ),
                                       child: const Icon(
@@ -302,7 +303,7 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: isSelected
-                                      ? const Color(0xFFE63946)
+                                      ? const Color(0xFFD32F2F)
                                       : const Color(0xFFF5F5F5),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
@@ -372,7 +373,7 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: isSelected
-                                      ? const Color(0xFFE63946)
+                                      ? const Color(0xFFD32F2F)
                                       : const Color(0xFFF5F5F5),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
@@ -446,7 +447,7 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFE63946),
+                          color: Color(0xFFD32F2F),
                         ),
                       ),
                     ],
@@ -456,7 +457,7 @@ class _CustomizeScreenState extends State<CustomizeScreen> {
                       Navigator.pushNamed(context, '/cart');
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFE63946),
+                      backgroundColor: const Color(0xFFD32F2F),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 40,
                         vertical: 14,

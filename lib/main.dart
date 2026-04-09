@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/splash_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/product_detail_screen.dart';
 import 'screens/customize_screen.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Foodgo - Food Delivery',
       theme: ThemeData(useMaterial3: true, fontFamily: 'Roboto'),
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: const SplashScreen(),
       routes: {
         '/home': (context) => const HomeScreen(),
         '/cart': (context) => const CartScreen(),
